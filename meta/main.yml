@@ -1,0 +1,11 @@
+galaxy_info:
+  author: AdopteUnOps
+  description: Register a host into rancher environment
+  license: Apache
+
+  min_ansible_version: 2.2
+
+  galaxy_tags:
+  - rancher
+
+dependencies: []

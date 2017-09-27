@@ -1,0 +1,6 @@
+---
+custom_host_tags: ""
+rancher_agent_image: "rancher/agent:{{rancher_agent_version}}"
+rancher_agent_version: "v1.2.6"
+rancher_master_url: "http://localhost:8080"
+rancher_project_name: "default"
