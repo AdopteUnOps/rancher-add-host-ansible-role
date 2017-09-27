@@ -1,20 +1,18 @@
 ---
-- include_vars: "{{ inventory_dir }}/group_vars/{{ rancher_project_name }}/apikey.yml"
-
 - name: Return the registration token URL of Rancher server
   uri:
     method: "POST"
     status_code: 201
-    user: "{{ rancher_api_key_project_token }}"
-    password: "{{ rancher_api_key_project_secret }}"
+    user: "{{ rancher_api_key }}"
+    password: "{{ rancher_api_secret }}"
     url: "{{rancher_master_url}}/v1/registrationtokens?projectId={{ rancher_project_id }}"
     return_content: yes
   register: rancher_token_url
 
 - name: Return the registration URL of Rancher server
   uri:
-    user: "{{ rancher_api_key_project_token }}"
-    password: "{{ rancher_api_key_project_secret }}"
+    user: "{{ rancher_api_key }}"
+    password: "{{ rancher_api_secret }}"
     url: "{{ rancher_token_url.json['links']['self'] }}"
     return_content: yes
   register: rancher_token
@@ -37,9 +35,9 @@
 
 - name: Get rancher hosts list
   uri:
-    user: "{{ rancher_api_key_project_token }}"
-    password: "{{ rancher_api_key_project_secret }}"
-    url: "{{rancher_master_url}}/v1/projects/{{ PROJECT_ID }}/hosts"
+    user: "{{ rancher_api_key }}"
+    password: "{{ rancher_api_secret }}"
+    url: "{{rancher_master_url}}/v1/projects/{{ rancher_project_id }}/hosts"
     return_content: yes
     headers:
       Accept: "application/json"
@@ -71,8 +69,8 @@
   uri:
     method: PUT
     status_code: 200
-    user: "{{ rancher_api_key_project_token }}"
-    password: "{{ rancher_api_key_project_secret }}"
+    user: "{{ rancher_api_key }}"
+    password: "{{ rancher_api_secret }}"
     body: "{{ rancher_host_labels_request | to_json }}"
     url: "{{rancher_master_url}}/v1/projects/{{ rancher_project_id }}/hosts/{{ rancher_host_id }}"
     headers:

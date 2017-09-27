@@ -2,15 +2,17 @@
 
 Ansible role to register host into rancher environment.
 
-This role assume that you have an apikey file in {{ inventory_dir }}/group_vars/{{ rancher_project_name }}/apikey.yml containing the following variables :
-* rancher_api_key_project_token
-* rancher_api_key_project_secret
-* rancher_project_id
-
 Requirements
 --------------
 Docker needs to be installed.
 
+Mandatory Variables
+-------------------
+```
+rancher_api_key: "mykey"
+rancher_api_secret: "mysecret"
+rancher_project_id: 1234
+```
 Role Variables
 --------------
 
