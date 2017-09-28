@@ -55,7 +55,7 @@
 
 - name: Rancher host labels
   set_fact:
-    rancher_host_labels: "{{ rancher_host_labels | default({ \"project\": normalized_project_name}) | combine( {item.split('=')[0]: item.split('=')[1]} ) }}"
+    rancher_host_labels: "{{ rancher_host_labels | default({ \"project\": rancher_project_name}) | combine( {item.split('=')[0]: item.split('=')[1]} ) }}"
   with_items: "{{ custom_host_tags_array }}"
   when: custom_host_tags != ""
 
