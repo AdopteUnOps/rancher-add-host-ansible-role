@@ -1,0 +1,2 @@
+#otherise it fail with custom_host_tags_array is undefined
+custom_host_tags_array: []
