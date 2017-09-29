@@ -1,2 +1,2 @@
-#otherise it fail with custom_host_tags_array is undefined
+#otherise it fail with custom_host_tags_array is undefined on ansible 2.2.0.0
 custom_host_tags_array: []
